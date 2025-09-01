@@ -43,7 +43,9 @@ const FileUpload = ({ onUploadStart, onProcessingStart, onSuccess, onError }) =>
       console.error('Upload error:', error);
       let errorMessage = 'An error occurred while processing your file.';
       
-      if (error.response?.data?.detail) {
+      if (error.response?.status === 404) {
+        errorMessage = 'API endpoint not found. The server may still be deploying. Please try again in a few minutes.';
+      } else if (error.response?.data?.detail) {
         errorMessage = error.response.data.detail;
       } else if (error.code === 'ECONNABORTED') {
         errorMessage = 'Request timed out. Please try with a smaller file.';
