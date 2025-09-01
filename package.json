@@ -1,0 +1,12 @@
+{
+  "name": "excel-financial-processor",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "dev": "concurrently \"cd backend && python main.py\" \"cd frontend && npm start\"",
+    "start": "cd frontend && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
