@@ -8,6 +8,9 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
 
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
+
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"

@@ -1,9 +1,0 @@
-{
-  "name": "netlify-functions",
-  "version": "1.0.0",
-  "dependencies": {
-    "xlsx": "^0.18.5",
-    "jspdf": "^2.5.1",
-    "jspdf-autotable": "^3.6.0"
-  }
-}
