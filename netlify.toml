@@ -1,11 +1,12 @@
 [build]
-  command = "cd frontend && npm install && npm run build"
+  command = "npm install && cd frontend && npm install && npm run build"
   functions = "netlify/functions"
   publish = "frontend/build"
 
 [build.environment]
   PYTHON_VERSION = "3.11"
   NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
 [[redirects]]
   from = "/api/*"
