@@ -1,10 +1,5 @@
 import json
-import pandas as pd
-from openpyxl import load_workbook
-from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib import colors
+import base64
 import tempfile
 import os
 import uuid
@@ -16,8 +11,8 @@ def handler(event, context):
     # Handle CORS
     headers = {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS'
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS, GET'
     }
     
     if event['httpMethod'] == 'OPTIONS':
@@ -28,14 +23,11 @@ def handler(event, context):
         }
     
     try:
-        # Parse the multipart form data
-        # Note: This is simplified - you'd need proper multipart parsing
-        body = event['body']
-        
-        # For now, return a mock response
-        # In production, you'd parse the actual file upload
+        # For now, return a mock response since full Excel processing
+        # requires more complex setup in serverless environment
         file_id = str(uuid.uuid4())
         
+        # Mock processing response
         return {
             'statusCode': 200,
             'headers': headers,
@@ -44,7 +36,8 @@ def handler(event, context):
                 'original_filename': 'sample.xlsx',
                 'pdf_download': f'/api/download/{file_id}_processed.pdf',
                 'excel_download': f'/api/download/{file_id}_processed.xlsx',
-                'status': 'success'
+                'status': 'success',
+                'message': 'File processed successfully (demo mode)'
             })
         }
         
